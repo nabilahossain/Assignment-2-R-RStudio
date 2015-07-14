@@ -1,0 +1,65 @@
+---
+title: "Week 2 Assignment"
+author: "Nabila Hossain"
+date: "July 12, 2015"
+output:
+  html_document:
+    keep_md: yes
+---
+
+_Assignment: R has built in functions for `choose()` and `factorial()`. Your task is to write your own variation of the `choose()`._
+
+I wrote the code below to find "n choose r" without using the built in functions `choose()` and `factorial()` in __R__.
+
+The code below will work for any positive number for $n$ and $r$ where $n\ge{r}$ to produce answer for the function: 
+$$\binom nr = \frac{n!}{(n-r)!r!}$$
+ 
+
+```{r}
+k <- function (n, r) { 
+
+  a <- 1
+  b <- 1
+  d <- 1
+
+  e <- n - r 
+
+  for (x in 1:n) {
+    a <- a*((1:n)[x]) 
+    } 
+  
+  for (y in 1:r) {
+    b <- b*((1:r)[y]) 
+    } 
+
+  for (z in 1:e) {
+    d <- d*((1:e)[z]) 
+    } 
+
+  l = (a / (d * b))
+  print(l) 
+}
+```
+
+Using the code we find __"3 choose 2"__ or $(^3 _2)$:
+```{r}
+k(3,2)
+```
+
+If we use the equation $\binom nr = \frac{n!}{(n-r)!r!}$ we find that __"3 choose 2"__ equals $3$.
+$$\binom {3}{2} = \frac{3!}{(3-2)!2!} =\frac{3{*}2}{1{*}2} = 3$$
+
+
+Using the code we find __"6 choose 3"__ or $(^6 _3)$:
+```{r}
+k(6,3)
+```
+
+If we use the equation we find that __"6 choose 3"__ equals $20$.
+$$\binom {6}{3} = \frac{6!}{(6-3)!3!} =\frac{6*5*4*{3!}}{3!{*}3!} = \frac{6{*}5{*}4}{3{*}2}= \frac{5{*}4}{1}=20$$
+
+Using the code we can also find large numbers like $(^{30} _9)$:
+```{r}
+k(30,9)
+```
+
